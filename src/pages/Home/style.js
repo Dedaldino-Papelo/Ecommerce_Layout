@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     home: {
         flex: 1,
         flexDirection: "column",
-        gap: 20
+        gap: 20,
+        backgroundColor: "#fff"
     }
 
 })

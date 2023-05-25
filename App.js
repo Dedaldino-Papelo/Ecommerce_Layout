@@ -8,18 +8,10 @@ import ProductDetails from './src/pages/ProductDetails/Index';
 
 const Stack = createStackNavigator();
 
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: 'rgb(255, 45, 85)',
-    background:'#fff'
-  },
-};
 
 export default function App() {
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer>
       <Stack.Navigator   
       screenOptions={{
         headerShown: false,
