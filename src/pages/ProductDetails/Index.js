@@ -56,19 +56,17 @@ function Index({ route }) {
           <TotalSeparator title={title} />
           <Text style={styles.description}>{description}</Text>
           <Text style={styles.textAddMore}> Add More </Text>
-          <View style={styles.wrapAddMoreItems}>
           <FlatList
               data={PopularData}
               style={styles.moreItemsList}
               horizontal
-              contentContainerStyle={{flexGrow: 1, justifyContent: "space-between"}}
+              contentContainerStyle={{flexGrow: 1, justifyContent: "space-between"}} 
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
                 <MoreItems key={item.id} image={image} item={item} />
               )}
           />
-          </View>
           <AddToCartButton />
           
         </View>

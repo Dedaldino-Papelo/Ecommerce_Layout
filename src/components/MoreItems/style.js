@@ -2,8 +2,6 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        borderWidth: 1,
     },
 
     MoreItems: {
@@ -14,12 +12,18 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",
+        marginLeft: 20
     },
 
     image: {
         width: 70,
         height: 57,
         resizeMode: "contain"
+    },
+    addMoreIcon: {
+        position: "absolute",
+        right: 0,
+        bottom: 0
     }
 
 })
