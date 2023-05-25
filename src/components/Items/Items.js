@@ -6,7 +6,7 @@ export default function Items({ item }) {
   const { src, title, bgBlue } = item
   return (
    <View style={styles.container}>
-        <View style={[styles.wrapImage, {backgroundColor: bgBlue ? '#7237A9': ''}]}>
+        <View style={[styles.wrapImage, {backgroundColor: bgBlue ? '#7237A9': 'rgba(114, 55, 169, 0.05)'}]}>
             <Image
               source={src}
               style={styles.image} 
