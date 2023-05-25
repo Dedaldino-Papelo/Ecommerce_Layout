@@ -70,7 +70,18 @@ const styles = StyleSheet.create({
         fontWeight: "400",
         lineHeight: 21,
         marginHorizontal: 20
-    }
+    },
+    textAddMore: {
+        marginHorizontal: 20,
+        fontSize: 18,
+        fontWeight: "500",
+        color: "#7c7c7c",
+        lineHeight: 27,
+        marginVertical: 15
+    },
+    moreItemsList: {
+        marginHorizontal: 20,
+    },
 })
 
 export default styles
