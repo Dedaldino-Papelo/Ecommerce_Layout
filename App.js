@@ -1,13 +1,26 @@
+import 'react-native-gesture-handler';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Home from './src/pages/Home/home';
+import ProductDetails from './src/pages/ProductDetails/Index';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Home />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator   
+      screenOptions={{
+        headerTransparent: true,
+        headerShown: false,
+        headerStyle: { backgroundColor: 'transparent' },
+    }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={ProductDetails} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
