@@ -6,19 +6,28 @@ import { useNavigation } from '@react-navigation/native';
 
 const PopularItems = ({ item }) => {
 
-  const { title, src, price, desc } = item;
+  const { name, image, price, description } = item;
   const navigation = useNavigation();
+
+  const baseURL = 'http://192.168.56.1:3333/uploads'
 
   return (
     <View style={styles.container}>
       <View style={styles.items}>
-        <Image source={src} />
-        <Text style={styles.title} onPress={() => navigation.navigate('Details', {
-          title: title,
-          image: src,
+        <Image 
+        style={{
+          width: 100,
+          height: 100,
+          resizeMode: "contain"
+      }} source={{
+          uri: `${baseURL}/${image}`
+        }} />
+        <Text style={styles.name} onPress={() => navigation.navigate('Details', {
+          name: name,
+          image: image,
           price: price,
-          description: desc
-        })}>{title}</Text>
+          description: description
+        })}>{name}</Text>
         <View style={styles.footer}>
           <Text style={styles.price}>${price}</Text>
           <AntDesign name="pluscircle" size={24} color="#7237A9" />

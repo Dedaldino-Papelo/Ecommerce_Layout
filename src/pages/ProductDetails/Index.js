@@ -7,19 +7,23 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./style";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../../components/customButton/customButton";
 import TotalSeparator from "../../components/TotalSeparator/TotalSeparator";
-import PopularData from "../../popular";
+/* import PopularData from "../../popular"; */
 import MoreItems from "../../components/MoreItems/MoreItems";
 import AddToCartButton from "../../components/addToCartButton/addToCartButton";
+import { ProductContext } from '../../contexts/product'
 
 function Index({ route }) {
-  const { image, price, description, title } = route.params;
+  const { products } = useContext(ProductContext)
+  const { image, price, description, name } = route.params;
   const navigation = useNavigation();
+
+  const baseURL = 'http://192.168.56.1:3333/uploads'
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -32,7 +36,12 @@ function Index({ route }) {
             color="#7237A9"
           />
         </TouchableOpacity>
-        <Image style={styles.image} source={image} />
+        <Image 
+          style={styles.image} 
+          source={{
+            uri: `${baseURL}/${image}`
+          }} 
+          />
       </View>
       <View style={styles.boxdetails}>
         <View
@@ -53,11 +62,11 @@ function Index({ route }) {
             <CustomButton />
             <Text style={styles.price}>${price}</Text>
           </View>
-          <TotalSeparator title={title} />
+          <TotalSeparator name={name} />
           <Text style={styles.description}>{description}</Text>
           <Text style={styles.textAddMore}> Add More </Text>
           <FlatList
-              data={PopularData}
+              data={products}
               style={styles.moreItemsList}
               horizontal
               contentContainerStyle={{flexGrow: 1, justifyContent: "space-between"}} 

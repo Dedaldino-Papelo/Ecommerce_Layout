@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "space-around",
         elevation: 5,
-        width: 163,
+        width: 153.8,
         height: 200,
         marginBottom: 5,
         paddingTop: 20,
