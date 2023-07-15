@@ -13,7 +13,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../../components/customButton/customButton";
 import TotalSeparator from "../../components/TotalSeparator/TotalSeparator";
-/* import PopularData from "../../popular"; */
 import MoreItems from "../../components/MoreItems/MoreItems";
 import AddToCartButton from "../../components/addToCartButton/addToCartButton";
 import { ProductContext } from '../../contexts/product'
