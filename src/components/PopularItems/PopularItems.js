@@ -1,10 +1,13 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./style";
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import { CartContext } from '../../contexts/cart'
 
 const PopularItems = ({ item }) => {
+
+  const {addProductToCart} = useContext(CartContext)
 
   const { name, image, price, description } = item;
   const navigation = useNavigation();
@@ -30,7 +33,11 @@ const PopularItems = ({ item }) => {
         })}>{name}</Text>
         <View style={styles.footer}>
           <Text style={styles.price}>${price}</Text>
-          <AntDesign name="pluscircle" size={24} color="#7237A9" />
+          <AntDesign 
+            name="pluscircle" 
+            size={24} color="#7237A9"
+            onPress={() => addProductToCart(item)} 
+            />
         </View>
       </View>
     </View>

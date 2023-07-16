@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import styles from './style'
@@ -10,7 +10,7 @@ import Popular from '../../components/Popular/Popular'
 export default function Home() {
   return (
     <View style={styles.home}>
-      <StatusBar style='auto' />
+      <StatusBar />
       <Header/>
       <Search/>
       <ItemsSelect />
