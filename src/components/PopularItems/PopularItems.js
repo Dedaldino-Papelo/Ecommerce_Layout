@@ -9,7 +9,7 @@ const PopularItems = ({ item }) => {
 
   const {addProductToCart} = useContext(CartContext)
 
-  const { name, image, price, description } = item;
+  const { name, image, price, description, id } = item;
   const navigation = useNavigation();
 
   const baseURL = 'http://192.168.56.1:3333/uploads'
@@ -26,6 +26,7 @@ const PopularItems = ({ item }) => {
           uri: `${baseURL}/${image}`
         }} />
         <Text style={styles.name} onPress={() => navigation.navigate('Details', {
+          id: id,
           name: name,
           image: image,
           price: price,

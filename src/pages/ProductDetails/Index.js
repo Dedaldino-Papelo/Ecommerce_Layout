@@ -16,13 +16,33 @@ import TotalSeparator from "../../components/TotalSeparator/TotalSeparator";
 import MoreItems from "../../components/MoreItems/MoreItems";
 import AddToCartButton from "../../components/addToCartButton/addToCartButton";
 import { ProductContext } from '../../contexts/product'
+import { CartContext } from '../../contexts/cart'
 
 function Index({ route }) {
   const { products } = useContext(ProductContext)
-  const { image, price, description, name } = route.params;
+  const { addProductToCart, decrease, cart } = useContext(CartContext)
+
+
+  const { image, price, description, name, id } = route.params;
   const navigation = useNavigation();
 
+  let quantity = 0
+
+  cart.forEach(element => {
+      if(element.id === id){
+        quantity = element.quantity
+      }
+  });
+
   const baseURL = 'http://192.168.56.1:3333/uploads'
+
+  const item = {
+    id,
+    image, 
+    price, 
+    description, 
+    name
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -53,15 +73,15 @@ function Index({ route }) {
           style={{ flex: 1, backgroundColor: "#fff", borderTopRightRadius: 75 }}
         >
           <View style={styles.addDecrease}>
-            <AntDesign name="minus" size={20} color="black" />
-            <Text style={styles.number}>2</Text>
-            <AntDesign name="plus" size={20} color="black" />
+            <AntDesign onPress={() => decrease(item)} name="minus" size={20} color="black" />
+            <Text style={styles.number}>{quantity}</Text>
+            <AntDesign onPress={() => addProductToCart(item)} name="plus" size={20} color="black" />
           </View>
           <View style={styles.starPrice}>
             <CustomButton />
             <Text style={styles.price}>${price}</Text>
           </View>
-          <TotalSeparator name={name} />
+          <TotalSeparator name={name} price={price} quantity={quantity} />
           <Text style={styles.description}>{description}</Text>
           <Text style={styles.textAddMore}> Add More </Text>
           <FlatList
@@ -72,7 +92,7 @@ function Index({ route }) {
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
-                <MoreItems key={item.id} image={image} item={item} />
+                <MoreItems key={item.id} image={image} item={item} addProductToCart={addProductToCart} />
               )}
           />
           <AddToCartButton />

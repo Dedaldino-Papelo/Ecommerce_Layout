@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './style'
 import { AntDesign } from '@expo/vector-icons'; 
 
-const MoreItems = ({ item, image }) => {
+const MoreItems = ({ item, image, addProductToCart }) => {
 const src = item.image
 const baseURL = 'http://192.168.56.1:3333/uploads'
 
@@ -18,7 +18,13 @@ const baseURL = 'http://192.168.56.1:3333/uploads'
                   uri: `${baseURL}/${src}`
                 }} 
               />
-              <AntDesign style={styles.addMoreIcon} name="pluscircle" size={25} color="#7237A9" />
+              <AntDesign 
+              style={styles.addMoreIcon} 
+              name="pluscircle" 
+              size={25} 
+              color="#7237A9"
+              onPress={() => addProductToCart(item)} 
+              />
             </View>
           ): ''
         }
