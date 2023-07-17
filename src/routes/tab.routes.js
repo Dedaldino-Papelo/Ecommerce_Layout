@@ -41,7 +41,7 @@ const TabRoute = () => {
         component={Cart}
         options={{
           tabBarBadge: itemCount,
-          tabBarBadgeStyle: {backgroundColor: 'red'},
+          tabBarBadgeStyle: {backgroundColor: '#fff', color: '#7237A9'},
           tabBarIcon: ({ size, color }) => (
             <SimpleLineIcons name='bag' size={size} color={color} />
           )
